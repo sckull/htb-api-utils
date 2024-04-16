@@ -1,0 +1,36 @@
+{% if maker2 != None %}
+    {% set mk = '<span><p class="user_maker"> [' + maker['name'] + '](https://www.hackthebox.eu/home/users/profile/' + maker['id'] | string + ')<img src="https://www.hackthebox.eu/badge/image/' + maker['id'] | string + '" class="img_user_maker"/> </p><hr style="opacity:25%;"><p class="user_maker2"> [' + maker2['name'] + '](https://www.hackthebox.eu/home/users/profile/' + maker2['id'] | string + ')<img src="https://www.hackthebox.eu/badge/image/' + maker2['id'] | string + '" class="img_user_maker"/></p> </span>' %}
+{% else %}
+    {% set mk = '<span><p class="user_maker"> [' + maker['name'] + '](https://www.hackthebox.eu/home/users/profile/' + maker['id'] | string + ')<img src="https://www.hackthebox.eu/badge/image/' + maker['id'] | string + '" class="img_user_maker"/> </p></span>' %}
+{% endif %}
+| Nombre | [{{name}}](https://app.hackthebox.com/machines/{{id_box}}) {{avatar}}
+|----------|:-------------:|
+| **OS** | <span><p class="os_type"> {{os}} <img src="/images/icons/{{os.lower()}}.png" class="img_type_os"/></p></span>
+| **Puntos**   |  {{points}}
+| **Dificultad** | {{difficulty}}
+| **Fecha de Salida** | {{release}}
+|**IP** | {{ip}}
+|**Maker** | {{ mk }}
+|{{'{{'}}< button pointer="none">{{'}}'}}Rated{{'{{'}}< /button >{{'}}'}} | {{'{{'}}< boxmd >{{'}}'}}
+```chart
+{
+    "type": "bar",
+    "data":  {
+        "labels": ["Cake", "VeryEasy", "Easy", "TooEasy", "Medium", "BitHard","Hard","TooHard","ExHard","BrainFuck"],
+        "datasets": [{
+            "label": "User Rated Difficulty",
+            "data": {{data}},
+            "backgroundColor": ["#9fef00","#9fef00","#9fef00", "#ffaf00","#ffaf00","#ffaf00","#ffaf00", "#ff3e3e","#ff3e3e","#ff3e3e"]
+        }]
+    },
+    "options": {
+        "scales": {
+          "xAxes": [{"display": false}],
+          "yAxes": [{"display": false}]
+        },
+        "legend": {"labels": {"fontColor": "white"}},
+        "responsive": true
+      }
+}
+```
+{{'{{'}}< /boxmd >{{'}}'}} |
